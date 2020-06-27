@@ -1,0 +1,51 @@
+.inputField {
+    color: white;
+    padding: 4px 6px;
+    border: .1px solid white;
+    background: transparent;
+    height: 28px;
+    width: 320px;
+    margin-bottom: 40px;
+    font-size: 14px;
+    transition: border .15s ease;
+}
+
+.inputField:focus
+{
+    border: .1px solid #345EB4;
+}
+
+
+.inputBox {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: min-content;
+}
+
+
+.inputBox label {
+    position: absolute;
+    top: -3px;
+    left: 5px;
+    padding: 0.625rem 0;
+    font-size: 15px;
+    color: white;
+    pointer-events: none;
+    transition: 0.25s;
+    opacity: .6;
+}
+
+.inputField:focus ~ label,
+.inputField:not([value=""]) ~ label
+{
+    top: -35px;
+    left: 0;
+    color: #345EB4;
+    opacity: .85;
+    font-size: 16px;
+}
+
+.label {
+    color: red!important;
+}

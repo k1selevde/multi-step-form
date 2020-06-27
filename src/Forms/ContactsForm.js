@@ -21,7 +21,7 @@ import {maxLengthCreator, required} from "../utils/validators";
 const maxLength30 = maxLengthCreator(30)
 
 
-class BasicForm extends React.Component {
+class ContactsForm extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -36,41 +36,38 @@ class BasicForm extends React.Component {
                     onSubmit={handleSubmit}
                 >
                     <Field
-                        name="username"
+                        name="firstName"
                         component={RenderField}
-                        id="username"
+                        id="firstName"
                         inputClass="inputWrap"
                         label="Имя пользователя"
                         validate={[required,maxLength30]}
                         type="text"
                     />
                     <Field
-                        name="email"
+                        name="LastName"
                         component={RenderField}
-                        id="email"
+                        id="LastName"
                         inputClass="inputWrap"
-                        label="Введите email"
-
+                        label="Фамилия пользователя"
                         validate={[required,maxLength30]}
                         type="text"
                     />
                     <Field
-                        name="password"
+                        name="phone"
                         component={RenderField}
-                        id="password"
+                        id="phone"
                         inputClass="inputWrap"
-                        label="Введите пароль"
-
+                        label="Номер телефона"
                         validate={[required,maxLength30]}
-                        type="text"
+                        type="phone"
                     />
                     <Field
-                        name="repeatPassword"
+                        name="address"
                         component={RenderField}
-                        id="repeatPassword"
+                        id="address"
                         inputClass="inputWrap"
-                        label="Повторите пароль"
-
+                        label="Адресс"
                         validate={[required,maxLength30]}
                         type="text"
                     />
@@ -81,7 +78,7 @@ class BasicForm extends React.Component {
 }
 
 const newForm = reduxForm({
-    form: 'basic'
-})(BasicForm);
+    form: 'contacts'
+})(ContactsForm);
 
 export default newForm;

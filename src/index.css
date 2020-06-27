@@ -2,13 +2,21 @@ body {
     background: url("https://images.unsplash.com/photo-1593024282550-af02e8726937?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&w=1000px");
 }
 .app__container {
+    width: 780px;
+    height: 500px;
     border-radius: 15px;
     box-shadow: 0 0 16px rgba(0,0,0,.2);
-    padding: 60px 90px;
+    padding: 40px 90px 20px 90px;
     margin: 70px auto;
     background: #19ddfe;
     width: min-content;
 
+}
+.forms__wrap {
+    display: flex;
+    min-width: 400px;
+    height: 400px;
+    overflow: hidden;
 }
 
 .step {
@@ -74,9 +82,10 @@ body {
     display: flex;
 }
 .controls {
-    display: block;
+    display: flex;
+    justify-content: space-between;
     margin: auto;
-    width: max-content;
+    width: 100%;
 }
 
 .last-step {
@@ -100,6 +109,10 @@ body {
 }
 
 .form__wrap {
-    min-width: 400px;
-    min-height: 200px;
+    margin: 40px auto;
+    display: block;
+}
+
+.controls__btn-hidden {
+    visibility: hidden;
 }

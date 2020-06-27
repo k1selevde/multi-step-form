@@ -5,7 +5,7 @@ export const DEC_PAGE = 'STEPS/DEC_PAGE'
 const initialState  = {
     currentPage: 1,
     pagesName: [
-        "Basic", "Contacts", "Avatar", "Finish", "Lock"
+        "Basic", "Contacts", "Avatar", "Finish"
     ]
 }
 

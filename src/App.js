@@ -4,6 +4,9 @@ import {initialize, reset} from 'redux-form'
 import {connect} from 'react-redux'
 import {decreasePage, incrementPage} from "./reducers/stepsReducer";
 import Steps from './Steps'
+import cn from 'classnames'
+import ContactsForm from "./Forms/ContactsForm";
+import AvatarForm from './Forms/Avatar'
 
 class App extends React.Component {
     constructor(props) {
@@ -11,6 +14,7 @@ class App extends React.Component {
         let {initializeAuth} = this.props;
         initializeAuth({title: 'Hi', text: 'Baroe'})
     }
+
 
 
     // приходит объект где свойства - имена Field'ов формы.
@@ -31,21 +35,32 @@ class App extends React.Component {
         return (
             <div className="app__container">
                 <Steps pagesName={pagesName} currentPage={currentPage}/>
-                <div className="form__wrap">
-                    {currentPage == 1 && <BasicForm onSubmit={this.handleSubmit}  reset={reset}/>}
+                <div className="forms__wrap">
+                    <div style={{display: (currentPage == 1) ? 'block' : 'none'}}>
+                        <BasicForm onSubmit={this.handleSubmit}  reset={reset}/>
+                    </div>
+                    <div style={{display: (currentPage == 2) ? 'block' : 'none'}}>
+                        <ContactsForm onSubmit={this.handleSubmit}  reset={reset}/>
+                    </div>
                 </div>
                 <div className="controls">
                     <button
-                        className="controls__btn"
+                        className={
+                            cn("controls__btn",
+                                {"controls__btn-hidden": currentPage == 1}
+                            )
+                        }
                         onClick={this.handlePreviousStep}
-                        disabled={currentPage == 1}
                     >
                         PREV
                     </button>
                     <button
                         onClick={this.handleNextStep}
-                        className="controls__btn"
-                        disabled={currentPage == 5}
+                        className={
+                            cn("controls__btn",
+                                {"controls__btn-hidden": currentPage == 5}
+                             )
+                        }
                     >
                         NEXT
                     </button>
@@ -62,7 +77,7 @@ class App extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return ({
-        initializeAuth: (data) => dispatch(initialize('auth',data)),
+        initializeAuth: (data) => dispatch(initialize('basic',data)),
         reset: () => dispatch(reset()),
         incrementPage: () => dispatch(incrementPage()),
         decreasePage: () => dispatch(decreasePage())
