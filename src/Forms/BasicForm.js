@@ -1,7 +1,7 @@
 import React from 'react'
 import {Field, reduxForm} from "redux-form";
-import RenderField from './renderField'
-import {maxLengthCreator, required} from "./utils/validators";
+import RenderField from '../renderField'
+import {maxLengthCreator, required} from "../utils/validators";
 
 
 class MyCustomInput extends React.Component {
@@ -21,7 +21,7 @@ class MyCustomInput extends React.Component {
 const maxLength30 = maxLengthCreator(30)
 
 
-class Form extends React.Component {
+class BasicForm extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -61,7 +61,7 @@ class Form extends React.Component {
 }
 
 const newForm = reduxForm({
-    form: 'auth'
-})(Form);
+    form: 'basic'
+})(BasicForm);
 
 export default newForm;

@@ -1,8 +1,9 @@
 import React from 'react'
-import Form from './Form'
+import BasicForm from './Forms/BasicForm'
 import {initialize, reset} from 'redux-form'
 import {connect} from 'react-redux'
-
+import {decreasePage, incrementPage} from "./reducers/stepsReducer";
+import Steps from './Steps'
 
 class App extends React.Component {
     constructor(props) {
@@ -17,26 +18,34 @@ class App extends React.Component {
         console.log('from app, text Field:', values.text);
     };
 
+    handlePreviousStep = () => {
+        this.props.decreasePage()
+    }
+
+    handleNextStep = () => {
+        this.props.incrementPage()
+    }
+
     render() {
-        const {reset} = this.props
+        const {reset, currentPage, pagesName} = this.props
         return (
-            <div>
-                <div>
-                    <h4 style={{color: 'black'}}>My app here</h4>
-                </div>
-                <div>
-                    <Form onSubmit={this.handleSubmit}  reset={reset}/>
+            <div className="app__container">
+                <Steps pagesName={pagesName} currentPage={currentPage}/>
+                <div className="form__wrap">
+                    {currentPage == 1 && <BasicForm onSubmit={this.handleSubmit}  reset={reset}/>}
                 </div>
                 <div className="controls">
                     <button
                         className="controls__btn"
-                        //onClick={this.incrementPage}
+                        onClick={this.handlePreviousStep}
+                        disabled={currentPage == 1}
                     >
                         PREV
                     </button>
                     <button
-
+                        onClick={this.handleNextStep}
                         className="controls__btn"
+                        disabled={currentPage == 5}
                     >
                         NEXT
                     </button>
@@ -54,9 +63,15 @@ class App extends React.Component {
 const mapDispatchToProps = dispatch => {
     return ({
         initializeAuth: (data) => dispatch(initialize('auth',data)),
-        reset: () => dispatch(reset())
+        reset: () => dispatch(reset()),
+        incrementPage: () => dispatch(incrementPage()),
+        decreasePage: () => dispatch(decreasePage())
     })
 }
 
+const mapStateToProps = state => ({
+    currentPage: state.steps.currentPage,
+    pagesName: state.steps.pagesName
+})
 
-export default connect(null,mapDispatchToProps)(App);
+export default connect(mapStateToProps,mapDispatchToProps)(App);

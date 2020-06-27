@@ -1,10 +1,105 @@
-.inputBlock {
-    border: 1px solid blue;
-    padding: 10px 20px;
+body {
+    background: url("https://images.unsplash.com/photo-1593024282550-af02e8726937?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&w=1000px");
+}
+.app__container {
+    border-radius: 15px;
+    box-shadow: 0 0 16px rgba(0,0,0,.2);
+    padding: 60px 90px;
+    margin: 70px auto;
+    background: #19ddfe;
+    width: min-content;
+
 }
 
-.error input
-.error textarea
-{
-    border: 1px solid darkred;
+.step {
+    color: black;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.step:not(:last-child)::before {
+    height: 0.2em;
+    width: 100%;
+    bottom: 0;
+    top: 1rem;
+    content: " ";
+    display: block;
+    position: absolute;
+    background: #b5b5b5;
+}
+.step__number {
+    z-index: 1;
+    width: 35px;
+    height: 35px;
+    display: -ms-flexbox;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    font-weight: 700;
+    justify-content: center;
+    background: #b5b5b5;
+    color: #fff;
+    border: 4px solid transparent;
+}
+
+.step.is-completed .step__number {
+    background: #f26120;
+    border: 4px solid #f26120;
+}
+
+.step.is-active:not(:last-child)::before,
+.step.is-completed:not(:last-child)::before {
+    background: #f26120;
+}
+
+
+
+/*
+.step.is-active:not(:first-child)::before,
+.step.is-completed:not(:first-child)::before {
+    background: #f26120;
+}
+*/
+
+.step.is-active .step__number{
+    background: #19ddfe;
+    border: 4px solid #f26120;
+}
+
+.steps__container {
+    margin: auto;
+    width: 600px;
+    display: flex;
+}
+.controls {
+    display: block;
+    margin: auto;
+    width: max-content;
+}
+
+.last-step {
+    flex-grow: 0
+}
+
+.controls__btn {
+    cursor: pointer;
+    padding: 9px 18px;
+    background: burlywood;
+    border-radius: 5px;
+    border: none;
+    transition: all .2s ease;
+}
+.controls__btn:hover {
+    opacity: .8
+}
+
+.controls__btn:active {
+    background: #f26120;
+}
+
+.form__wrap {
+    min-width: 400px;
+    min-height: 200px;
 }
