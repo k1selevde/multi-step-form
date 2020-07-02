@@ -6,7 +6,7 @@ import {decreasePage, incrementPage} from "./reducers/stepsReducer";
 import Steps from './Steps'
 import cn from 'classnames'
 import ContactsForm from "./Forms/ContactsForm";
-import AvatarForm from './Forms/Avatar'
+import AvatarForm from './Forms/AvatarForm'
 
 class App extends React.Component {
     constructor(props) {
@@ -31,17 +31,27 @@ class App extends React.Component {
     }
 
     render() {
-        const {reset, currentPage, pagesName} = this.props
+        const {reset, currentPage, pagesName} = this.props;
+        var formStep;
+        switch (currentPage) {
+            case 1:
+                formStep = <BasicForm onSubmit={this.handleSubmit}  reset={reset}/>
+                break;
+            case 2:
+                formStep = <ContactsForm onSubmit={this.handleSubmit}  reset={reset}/>
+                break;
+            case 3:
+                formStep =   <AvatarForm onSubmit={this.handleSubmit}  reset={reset}/>
+                break;
+            default:
+                formStep = <BasicForm onSubmit={this.handleSubmit}  reset={reset}/>;
+                break;
+        }
         return (
             <div className="app__container">
                 <Steps pagesName={pagesName} currentPage={currentPage}/>
                 <div className="forms__wrap">
-                    <div style={{display: (currentPage == 1) ? 'block' : 'none'}}>
-                        <BasicForm onSubmit={this.handleSubmit}  reset={reset}/>
-                    </div>
-                    <div style={{display: (currentPage == 2) ? 'block' : 'none'}}>
-                        <ContactsForm onSubmit={this.handleSubmit}  reset={reset}/>
-                    </div>
+                    {formStep}
                 </div>
                 <div className="controls">
                     <button
@@ -58,7 +68,7 @@ class App extends React.Component {
                         onClick={this.handleNextStep}
                         className={
                             cn("controls__btn",
-                                {"controls__btn-hidden": currentPage == 5}
+                                {"controls__btn-hidden": currentPage == pagesName.length}
                              )
                         }
                     >
