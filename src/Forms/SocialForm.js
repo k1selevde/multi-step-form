@@ -4,6 +4,10 @@ import RenderField from "../ui/RenderField/RenderField";
 import {required} from "../utils/validators";
 
 class SocialForm extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
     render() {
         const {handleSubmit,reset} = this.props;
         return(

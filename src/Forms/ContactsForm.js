@@ -3,23 +3,7 @@ import {Field, reduxForm} from "redux-form";
 import RenderField from '../ui/RenderField/RenderField'
 import {maxLengthCreator, required} from "../utils/validators";
 
-
-/*class MyCustomInput extends React.Component {
-    render() {
-        const {meta,label,input,...other} = this.props
-        return (
-            <div className="customInputWrap">
-                <label className="customInputLabel">{label}</label>
-                {meta.error && <span>{meta.error}</span>}
-                <input {...input} {...other} />
-            </div>
-        )
-    }
-}*/
-
-
 const maxLength30 = maxLengthCreator(30)
-
 
 class ContactsForm extends React.Component {
     constructor(props) {
@@ -28,7 +12,6 @@ class ContactsForm extends React.Component {
 
     render() {
         const {handleSubmit,reset} = this.props;
-
 
         return (
             <div className="form__wrap">
