@@ -50,7 +50,6 @@ class BasicForm extends React.Component {
                         id="email"
                         inputClass="inputWrap"
                         label="Введите email"
-
                         validate={[required,maxLength30]}
                         type="text"
                     />
@@ -60,7 +59,6 @@ class BasicForm extends React.Component {
                         id="password"
                         inputClass="inputWrap"
                         label="Введите пароль"
-
                         validate={[required,maxLength30]}
                         type="text"
                     />
@@ -70,7 +68,6 @@ class BasicForm extends React.Component {
                         id="repeatPassword"
                         inputClass="inputWrap"
                         label="Повторите пароль"
-
                         validate={[required,maxLength30]}
                         type="text"
                     />
@@ -81,7 +78,10 @@ class BasicForm extends React.Component {
 }
 
 const newForm = reduxForm({
-    form: 'basic'
+    form: 'basic',
+    enableReinitialize: true,
+    destroyOnUnmount: false,
+    keepDirtyOnReinitialize: true
 })(BasicForm);
 
 export default newForm;

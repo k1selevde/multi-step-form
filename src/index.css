@@ -14,6 +14,7 @@ body {
 }
 .forms__wrap {
     display: flex;
+    justify-content: center;
     min-width: 400px;
     height: 400px;
     overflow: hidden;
@@ -115,4 +116,10 @@ body {
 
 .controls__btn-hidden {
     visibility: hidden;
+}
+
+.containerInfo {
+    background: black;
+    padding: 12px 20px;
+
 }

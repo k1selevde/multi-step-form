@@ -6,13 +6,12 @@ import {decreasePage, incrementPage} from "./reducers/stepsReducer";
 import Steps from './Steps'
 import cn from 'classnames'
 import ContactsForm from "./Forms/ContactsForm";
-import AvatarForm from './Forms/AvatarForm'
+import SocialsForm from "./Forms/SocialForm";
+import FinishBlock from "./Forms/FinishBlock";
 
 class App extends React.Component {
     constructor(props) {
         super(props);
-        let {initializeAuth} = this.props;
-        initializeAuth({title: 'Hi', text: 'Baroe'})
     }
 
 
@@ -41,7 +40,10 @@ class App extends React.Component {
                 formStep = <ContactsForm onSubmit={this.handleSubmit}  reset={reset}/>
                 break;
             case 3:
-                formStep =   <AvatarForm onSubmit={this.handleSubmit}  reset={reset}/>
+                formStep =   <SocialsForm onSubmit={this.handleSubmit}  reset={reset}/>
+                break;
+            case 4:
+                formStep = <FinishBlock />
                 break;
             default:
                 formStep = <BasicForm onSubmit={this.handleSubmit}  reset={reset}/>;
@@ -87,7 +89,6 @@ class App extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return ({
-        initializeAuth: (data) => dispatch(initialize('basic',data)),
         reset: () => dispatch(reset()),
         incrementPage: () => dispatch(incrementPage()),
         decreasePage: () => dispatch(decreasePage())

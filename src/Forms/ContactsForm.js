@@ -78,7 +78,10 @@ class ContactsForm extends React.Component {
 }
 
 const newForm = reduxForm({
-    form: 'contacts'
+    form: 'contacts',
+    enableReinitialize: true,
+    destroyOnUnmount: false,
+    keepDirtyOnReinitialize: true
 })(ContactsForm);
 
 export default newForm;
