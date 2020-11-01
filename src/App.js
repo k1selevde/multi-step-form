@@ -15,7 +15,6 @@ class App extends React.Component {
     }
 
 
-
     // приходит объект где свойства - имена Field'ов формы.
     handleSubmit = (values) => {
         console.log('from app, text Field:', values.text);
