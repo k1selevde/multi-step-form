@@ -1,5 +1,5 @@
 import React from 'react'
-import './Back.css'
+import './Back.sass'
 
 const Back  = () => {
     return (
